@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post['title'] }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>{{ post['title'] }}</h1>
+    <p>{{ post['content'] }}</p>
+    <p>Автор: {{ post['user_id'] }}</p>
+    <p>Дата: {{ post['created_at'] }}</p>
+    <a href="/posts/">Назад к списку постов</a>
+</body>
+</html>
