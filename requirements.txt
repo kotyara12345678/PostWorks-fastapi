@@ -1,7 +1,9 @@
 fastapi
-uvicorn[standard]
+uvicorn
 jinja2
 motor
 httpx
 pydantic-settings
-bson
+python-dotenv
+pymongo
+python-multipart

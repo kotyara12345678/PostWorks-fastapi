@@ -1,7 +1,6 @@
-import motor.motor_asyncio
+from motor.motor_asyncio import AsyncIOMotorClient
 from app.core.config import settings
 
-# Подключение к монге
-client = motor.motor_asyncio.AsyncIOMotorClient(settings.MONGODB_URL)
-db = client.postsdb
-posts_collection = db.posts
+client = AsyncIOMotorClient(settings.MONGO_URL)
+db = client[settings.MONGO_DB_NAME]
+posts_collection = db["posts"]

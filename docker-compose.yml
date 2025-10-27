@@ -1,27 +1,27 @@
-version: "3.9"
-
 services:
+  # === POSTS SERVICE ===
   posts-service:
-    build: .
+    build: "C:/Users/glino/OneDrive/Рабочий стол/PostsPython"
     container_name: posts-service
     ports:
-      - "8001:8000"
+      - "8001:8000"  # внешний порт:порт внутри контейнера
     environment:
-      - MONGODB_URL=mongodb://mongo:27017
-      - USERS_SERVICE_URL=http://users-service:8000
-    depends_on:
-      - mongo
-      - users-service
+      - USERS_SERVICE_URL=http://fastapiproject2:8000
+      - MONGO_URL=mongodb://mongo:27017
+      - MONGO_DB_NAME=postworks_db
+    volumes:
+      - "C:/Users/glino/OneDrive/Рабочий стол/PostsPython:/app"
+    working_dir: /app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
+  # === MONGO DB ===
   mongo:
-    image: mongo:7
+    image: mongo
     container_name: mongo
-    restart: always
     ports:
       - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
 
-  users-service:
-    image: users-service:latest
-    container_name: users-service
-    ports:
-      - "8000:8000"
+volumes:
+  mongo_data:

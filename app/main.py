@@ -19,3 +19,5 @@ from fastapi.responses import RedirectResponse
 @app.get("/")
 async def root():
     return RedirectResponse("/posts/")
+#  http://localhost:8001/posts/create          docker-compose up --build
+#  http://localhost:8000
